@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AI Personal Assistant dashboard."
+    >
+
+    <title>Dashboard | AI Personal Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- =============================================
+             MOBILE OVERLAY
+        ============================================== -->
+
+        <div
+            id="sidebarOverlay"
+            class="sidebar-overlay"
+        ></div>
+
+        <!-- =============================================
+             SIDEBAR
+        ============================================== -->
+
+        <aside
+            id="dashboardSidebar"
+            class="dashboard-sidebar"
+        >
+
+            <div class="sidebar-top">
+
+                <a
+                    href="index.html"
+                    class="dashboard-brand"
+                >
+                    <span class="brand-icon">
+                        🤖
+                    </span>
+
+                    <span class="brand-text">
+                        AI Personal Assistant
+                    </span>
+                </a>
+
+                <button
+                    id="closeSidebarButton"
+                    class="mobile-close-button"
+                    type="button"
+                    title="Close sidebar"
+                    aria-label="Close sidebar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <button
+                id="newChatButton"
+                class="new-chat-button"
+                type="button"
+            >
+                <span>＋</span>
+                New Chat
+            </button>
+
+            <!-- Conversation Search -->
+
+            <div class="conversation-search">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    id="conversationSearchInput"
+                    type="search"
+                    placeholder="Search conversations"
+                    autocomplete="off"
+                    aria-label="Search conversations"
+                >
+
+            </div>
+
+            <!-- Conversation History -->
+
+            <div class="conversation-section">
+
+                <div class="section-title-row">
+
+                    <p class="sidebar-section-title">
+                        Recent Conversations
+                    </p>
+
+                    <button
+                        id="refreshConversationsButton"
+                        class="small-icon-button"
+                        type="button"
+                        title="Refresh conversations"
+                        aria-label="Refresh conversations"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+                <div
+                    id="conversationList"
+                    class="conversation-list"
+                >
+
+                    <div
+                        id="conversationEmptyState"
+                        class="conversation-empty-state"
+                    >
+                        <span>💬</span>
+
+                        <p>
+                            No conversations yet.
+                        </p>
+
+                        <small>
+                            Start a new chat to begin.
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- User Area -->
+
+            <div class="sidebar-user-area">
+
+                <button
+                    id="userMenuButton"
+                    class="user-menu-button"
+                    type="button"
+                >
+
+                    <span
+                        id="userAvatar"
+                        class="user-avatar"
+                    >
+                        U
+                    </span>
+
+                    <span class="user-information">
+
+                        <strong id="sidebarUserName">
+                            User
+                        </strong>
+
+                        <small id="sidebarUserEmail">
+                            user@example.com
+                        </small>
+
+                    </span>
+
+                    <span class="user-menu-arrow">
+                        ⋮
+                    </span>
+
+                </button>
+
+                <div
+                    id="userDropdown"
+                    class="user-dropdown"
+                    hidden
+                >
+
+                    <button
+                        id="profileButton"
+                        type="button"
+                    >
+                        👤 Profile
+                    </button>
+
+                    <button
+                        id="settingsButton"
+                        type="button"
+                    >
+                        ⚙️ Settings
+                    </button>
+
+                    <button
+                        id="logoutButton"
+                        class="logout-option"
+                        type="button"
+                    >
+                        🚪 Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- =============================================
+             MAIN APPLICATION
+        ============================================== -->
+
+        <main class="dashboard-main">
+
+            <!-- Top Header -->
+
+            <header class="dashboard-header">
+
+                <div class="header-left">
+
+                    <button
+                        id="openSidebarButton"
+                        class="menu-button"
+                        type="button"
+                        title="Open sidebar"
+                        aria-label="Open sidebar"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <h1 id="activeConversationTitle">
+                            New Conversation
+                        </h1>
+
+                        <p id="connectionStatus">
+                            <span class="online-dot"></span>
+                            AI Assistant Online
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <button
+                        id="pdfContextButton"
+                        class="header-action-button"
+                        type="button"
+                        title="PDF context"
+                        aria-label="PDF context"
+                    >
+                        📄
+                    </button>
+
+                    <button
+                        id="themeButton"
+                        class="header-action-button"
+                        type="button"
+                        title="Switch theme"
+                        aria-label="Switch theme"
+                    >
+                        🌙
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- =============================================
+                 CHAT AREA
+            ============================================== -->
+
+            <section class="chat-workspace">
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages"
+                    aria-live="polite"
+                >
+
+                    <!-- Welcome Screen -->
+
+                    <div
+                        id="welcomeState"
+                        class="welcome-state"
+                    >
+
+                        <div class="welcome-icon">
+                            🤖
+                        </div>
+
+                        <h2>
+                            Hello,
+                            <span id="welcomeUserName">
+                                User
+                            </span>!
+                        </h2>
+
+                        <p>
+                            How can I help you today?
+                        </p>
+
+                        <div class="suggestion-grid">
+
+                            <button
+                                class="suggestion-card"
+                                type="button"
+                                data-prompt="Explain Spring Boot in simple words."
+                            >
+                                <span>☕</span>
+
+                                <div>
+                                    <strong>
+                                        Learn Spring Boot
+                                    </strong>
+
+                                    <small>
+                                        Explain concepts simply
+                                    </small>
+                                </div>
+                            </button>
+
+                            <button
+                                class="suggestion-card"
+                                type="button"
+                                data-prompt="Help me prepare for a Java backend interview."
+                            >
+                                <span>💼</span>
+
+                                <div>
+                                    <strong>
+                                        Interview Preparation
+                                    </strong>
+
+                                    <small>
+                                        Practice Java questions
+                                    </small>
+                                </div>
+                            </button>
+
+                            <button
+                                class="suggestion-card"
+                                type="button"
+                                data-prompt="Create a study plan for learning DSA."
+                            >
+                                <span>📚</span>
+
+                                <div>
+                                    <strong>
+                                        Create a Study Plan
+                                    </strong>
+
+                                    <small>
+                                        Organize your learning
+                                    </small>
+                                </div>
+                            </button>
+
+                            <button
+                                class="suggestion-card"
+                                type="button"
+                                data-prompt="Review my project idea and suggest improvements."
+                            >
+                                <span>💡</span>
+
+                                <div>
+                                    <strong>
+                                        Improve a Project
+                                    </strong>
+
+                                    <small>
+                                        Get practical suggestions
+                                    </small>
+                                </div>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Typing Indicator -->
+
+                <div
+                    id="typingIndicator"
+                    class="typing-indicator"
+                    hidden
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <!-- =============================================
+                     CHAT COMPOSER
+                ============================================== -->
+
+                <div class="chat-composer-wrapper">
+
+                    <!-- Selected PDF -->
+
+                    <div
+                        id="selectedDocumentBanner"
+                        class="selected-document-banner"
+                        hidden
+                    >
+
+                        <span>
+                            📄
+                        </span>
+
+                        <div>
+
+                            <strong id="selectedDocumentName">
+                                Document.pdf
+                            </strong>
+
+                            <small>
+                                PDF context enabled
+                            </small>
+
+                        </div>
+
+                        <button
+                            id="removeDocumentContextButton"
+                            type="button"
+                            aria-label="Remove document context"
+                            title="Remove document context"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+                    <form
+                        id="chatForm"
+                        class="chat-composer"
+                    >
+
+                        <div class="composer-tools">
+
+                            <button
+                                id="uploadPdfButton"
+                                class="composer-tool-button"
+                                type="button"
+                                title="Upload PDF"
+                                aria-label="Upload PDF"
+                            >
+                                📎
+                            </button>
+
+                            <input
+                                id="pdfFileInput"
+                                type="file"
+                                accept="application/pdf,.pdf"
+                                hidden
+                            >
+
+                            <button
+                                id="voiceButton"
+                                class="composer-tool-button"
+                                type="button"
+                                title="Voice input"
+                                aria-label="Voice input"
+                            >
+                                🎤
+                            </button>
+
+                        </div>
+
+                        <textarea
+                            id="messageInput"
+                            rows="1"
+                            placeholder="Message your AI assistant..."
+                            autocomplete="off"
+                            aria-label="Message your AI assistant"
+                        ></textarea>
+
+                        <button
+                            id="sendButton"
+                            class="send-button"
+                            type="submit"
+                            title="Send message"
+                            aria-label="Send message"
+                            disabled
+                        >
+                            ➤
+                        </button>
+
+                        <button
+                            id="stopButton"
+                            class="stop-button"
+                            type="button"
+                            title="Stop generating"
+                            aria-label="Stop generating"
+                            hidden
+                        >
+                            ■
+                        </button>
+
+                    </form>
+
+                    <p class="composer-note">
+                        AI responses may contain mistakes. Verify important information.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+<!-- =============================================
+     PROFILE MODAL
+============================================== -->
+
+<div
+    id="profileModal"
+    class="modal-overlay"
+    aria-hidden="true"
+    hidden
+>
+
+    <div
+        class="profile-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="profileTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="modal-label">
+                    Account
+                </p>
+
+                <h2 id="profileTitle">
+                    My Profile
+                </h2>
+
+            </div>
+
+            <button
+                id="closeProfileButton"
+                class="modal-close-button"
+                type="button"
+                aria-label="Close profile"
+            >
+                ✕
+            </button>
+
+        </div>
+
+        <div class="profile-content">
+
+            <div class="profile-identity">
+
+                <div
+                    id="profileAvatar"
+                    class="profile-avatar"
+                >
+                    U
+                </div>
+
+                <div>
+
+                    <h3 id="profileName">
+                        User
+                    </h3>
+
+                    <p id="profileEmail">
+                        user@example.com
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="profile-details-grid">
+
+                <div class="profile-detail-card">
+
+                    <span class="profile-detail-icon">
+                        👤
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Full Name
+                        </small>
+
+                        <strong id="profileFullName">
+                            User
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-detail-card">
+
+                    <span class="profile-detail-icon">
+                        ✉️
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Email Address
+                        </small>
+
+                        <strong id="profileEmailAddress">
+                            user@example.com
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-detail-card">
+
+                    <span class="profile-detail-icon">
+                        🔐
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Account Security
+                        </small>
+
+                        <strong>
+                            JWT Protected
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-detail-card">
+
+                    <span class="profile-detail-icon">
+                        🤖
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Assistant Access
+                        </small>
+
+                        <strong>
+                            Active
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profile-note">
+
+                <span>
+                    ℹ️
+                </span>
+
+                <p>
+                    Your profile information is securely linked to your
+                    AI Personal Assistant account.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                id="profileLogoutButton"
+                class="secondary-modal-button profile-logout-button"
+                type="button"
+            >
+                Logout
+            </button>
+
+            <button
+                id="closeProfileActionButton"
+                class="primary-modal-button"
+                type="button"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- =============================================
+         SETTINGS MODAL
+    ============================================== -->
+
+    <div
+        id="settingsModal"
+        class="modal-overlay"
+        aria-hidden="true"
+        hidden
+    >
+
+        <div
+            class="settings-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="settingsTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="modal-label">
+                        Preferences
+                    </p>
+
+                    <h2 id="settingsTitle">
+                        Settings
+                    </h2>
+
+                </div>
+
+                <button
+                    id="closeSettingsButton"
+                    class="modal-close-button"
+                    type="button"
+                    aria-label="Close settings"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <div class="settings-content">
+
+                <div class="setting-group">
+
+                    <label for="themeSelect">
+                        Theme
+                    </label>
+
+                    <select id="themeSelect">
+
+                        <option value="system">
+                            System Default
+                        </option>
+
+                        <option value="light">
+                            Light
+                        </option>
+
+                        <option value="dark">
+                            Dark
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="setting-group">
+
+                    <label for="fontSizeSelect">
+                        Font Size
+                    </label>
+
+                    <select id="fontSizeSelect">
+
+                        <option value="small">
+                            Small
+                        </option>
+
+                        <option
+                            value="medium"
+                            selected
+                        >
+                            Medium
+                        </option>
+
+                        <option value="large">
+                            Large
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <label class="setting-toggle">
+
+                    <div>
+
+                        <strong>
+                            Speak AI responses
+                        </strong>
+
+                        <small>
+                            Read completed AI responses aloud.
+                        </small>
+
+                    </div>
+
+                    <input
+                        id="autoSpeakToggle"
+                        type="checkbox"
+                    >
+
+                    <span class="toggle-control"></span>
+
+                </label>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    id="resetSettingsButton"
+                    class="secondary-modal-button"
+                    type="button"
+                >
+                    Reset
+                </button>
+
+                <button
+                    id="saveSettingsButton"
+                    class="primary-modal-button"
+                    type="button"
+                >
+                    Save Settings
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+<!-- =============================================
+     FEEDBACK MODAL
+============================================== -->
+
+<div
+    id="feedbackModal"
+    class="modal-overlay"
+    hidden
+>
+
+    <div class="feedback-modal">
+
+        <div class="feedback-header">
+
+            <h2>Share Your Feedback</h2>
+
+            <p>
+                We'd love to know how your experience has been.
+            </p>
+
+        </div>
+
+        <div class="feedback-body">
+
+            <label>Rate your experience</label>
+
+            <div
+                id="feedbackStars"
+                class="feedback-stars"
+            >
+
+                <span data-rating="1">☆</span>
+                <span data-rating="2">☆</span>
+                <span data-rating="3">☆</span>
+                <span data-rating="4">☆</span>
+                <span data-rating="5">☆</span>
+
+            </div>
+
+            <label>Overall Experience</label>
+
+            <select id="experienceSelect">
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Excellent
+                </option>
+
+                <option>
+                    Good
+                </option>
+
+                <option>
+                    Average
+                </option>
+
+                <option>
+                    Poor
+                </option>
+
+            </select>
+
+            <label>Suggestions</label>
+
+            <textarea
+                id="feedbackSuggestion"
+                rows="3"
+                placeholder="Tell us what you liked or what can be improved..."
+            ></textarea>
+
+            <label>Bug Report (Optional)</label>
+
+            <textarea
+                id="feedbackBug"
+                rows="3"
+                placeholder="Did you notice any issues?"
+            ></textarea>
+
+        </div>
+
+        <div class="feedback-footer">
+
+            <button
+                id="feedbackLaterButton"
+                class="secondary-modal-button"
+            >
+                Later
+            </button>
+
+            <button
+                id="submitFeedbackButton"
+                class="primary-modal-button"
+            >
+                Submit Feedback
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- =============================================
+         TOASTS AND LOADING
+    ============================================== -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+        aria-live="polite"
+    ></div>
+
+    <div
+        id="loadingOverlay"
+        class="loading-overlay"
+        hidden
+    >
+
+        <div class="loading-card">
+
+            <div class="loading-spinner"></div>
+
+            <p id="loadingMessage">
+                Loading your assistant...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- =============================================
+         JAVASCRIPT LIBRARIES
+    ============================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

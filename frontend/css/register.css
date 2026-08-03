@@ -1,0 +1,985 @@
+/* =========================================================
+   AI PERSONAL ASSISTANT
+   PROFESSIONAL REGISTER PAGE
+========================================================= */
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #1f2435;
+    background: #f6f5ff;
+
+    line-height: 1.6;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================================
+   MAIN PAGE LAYOUT
+========================================================= */
+
+.register-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 100vh;
+}
+
+/* =========================================================
+   LEFT BRANDING PANEL
+========================================================= */
+
+.branding-panel {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    padding: 44px 7%;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 18% 18%,
+            rgba(255, 255, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #4b3fd5 0%,
+            #6848e8 52%,
+            #8a43e6 100%
+        );
+}
+
+.branding-panel::before {
+    content: "";
+
+    position: absolute;
+
+    top: -180px;
+    right: -160px;
+
+    width: 420px;
+    height: 420px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+}
+
+.branding-panel::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -220px;
+    left: -170px;
+
+    width: 470px;
+    height: 470px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+/* =========================================================
+   BRAND LOGO
+========================================================= */
+
+.brand-logo {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+
+    gap: 12px;
+
+    color: #ffffff;
+
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.logo-icon {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    font-size: 0.78rem;
+    font-weight: 900;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.logo-text {
+    font-weight: 800;
+}
+
+/* =========================================================
+   BRANDING CONTENT
+========================================================= */
+
+.branding-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 680px);
+
+    margin: auto 0;
+
+    padding: 65px 0;
+}
+
+.section-label {
+    display: inline-flex;
+
+    margin-bottom: 24px;
+
+    padding: 8px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.11);
+
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+.branding-content h1 {
+    max-width: 650px;
+
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+
+    line-height: 1.08;
+    letter-spacing: -0.05em;
+}
+
+.branding-content > p {
+    max-width: 640px;
+
+    margin-top: 24px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.benefits-list {
+    display: grid;
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+.benefit-icon {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+
+    width: 31px;
+    height: 31px;
+
+    margin-top: 2px;
+
+    color: #533ed4;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    font-size: 0.9rem;
+    font-weight: 900;
+
+    box-shadow: 0 9px 22px rgba(31, 20, 105, 0.22);
+}
+
+.benefit-item h3 {
+    margin-bottom: 3px;
+
+    font-size: 0.98rem;
+}
+
+.benefit-item p {
+    color: rgba(255, 255, 255, 0.74);
+
+    font-size: 0.86rem;
+}
+
+.branding-footer {
+    position: relative;
+    z-index: 2;
+
+    color: rgba(255, 255, 255, 0.64);
+
+    font-size: 0.8rem;
+}
+
+/* =========================================================
+   RIGHT FORM PANEL
+========================================================= */
+
+.form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: 50px 6%;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(126, 90, 238, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            150deg,
+            #fbfbff,
+            #f4f2ff
+        );
+}
+
+.register-card {
+    width: min(100%, 540px);
+
+    padding: 40px;
+
+    border: 1px solid rgba(84, 70, 186, 0.12);
+    border-radius: 26px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 30px 80px rgba(54, 44, 125, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   MOBILE LOGO
+========================================================= */
+
+.mobile-logo {
+    display: none;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    color: #4c42b7;
+
+    font-weight: 800;
+}
+
+.mobile-logo .logo-icon {
+    color: #5948d8;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ebe8ff,
+            #f7eaff
+        );
+}
+
+/* =========================================================
+   FORM HEADING
+========================================================= */
+
+.form-heading {
+    margin-bottom: 28px;
+}
+
+.form-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #6655e9;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+
+    text-transform: uppercase;
+}
+
+.form-heading h2 {
+    color: #1f2537;
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.form-heading p {
+    margin-top: 8px;
+
+    color: #747b8d;
+
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   FORM LAYOUT
+========================================================= */
+
+.name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #363c4e;
+
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+    min-height: 50px;
+
+    padding: 0 14px;
+
+    color: #252b3d;
+
+    border: 1px solid rgba(79, 70, 157, 0.17);
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #fbfbff;
+
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #a0a5b3;
+}
+
+.form-group input:focus {
+    border-color: #7160e6;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(102, 82, 225, 0.11);
+}
+
+.form-group input.input-error {
+    border-color: #df4f61;
+
+    background: #fff9fa;
+}
+
+.form-group input.input-error:focus {
+    box-shadow:
+        0 0 0 4px
+        rgba(223, 79, 97, 0.1);
+}
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 70px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 9px;
+
+    min-width: 52px;
+    height: 34px;
+
+    padding: 0 9px;
+
+    color: #685ac4;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #f0edff;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.password-toggle:hover {
+    background: #e7e2ff;
+
+    transform: scale(1.03);
+}
+
+.password-hint {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #9297a6;
+
+    font-size: 0.72rem;
+}
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+.error-message {
+    display: block;
+
+    min-height: 17px;
+
+    margin-top: 5px;
+
+    color: #d54155;
+
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+/* =========================================================
+   TERMS
+========================================================= */
+
+.terms-row {
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    color: #656c7e;
+
+    font-size: 0.8rem;
+
+    cursor: pointer;
+}
+
+.checkbox-container input {
+    position: absolute;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.custom-checkbox {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 18px;
+    height: 18px;
+
+    margin-top: 2px;
+
+    border: 1px solid rgba(88, 74, 180, 0.28);
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.checkbox-container input:checked + .custom-checkbox {
+    border-color: #6554e8;
+
+    background: #6554e8;
+}
+
+.checkbox-container input:checked + .custom-checkbox::after {
+    content: "✓";
+
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: #ffffff;
+
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.checkbox-container input:focus-visible + .custom-checkbox {
+    outline: 3px solid rgba(104, 84, 227, 0.25);
+    outline-offset: 2px;
+}
+
+.checkbox-text a {
+    color: #6253d9;
+
+    font-weight: 700;
+}
+
+.checkbox-text a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   FORM MESSAGE
+========================================================= */
+
+.form-message {
+    display: none;
+
+    margin-bottom: 17px;
+
+    padding: 12px 14px;
+
+    border-radius: 11px;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.success {
+    color: #157145;
+
+    border: 1px solid rgba(36, 173, 105, 0.2);
+
+    background: #effbf5;
+}
+
+.form-message.error {
+    color: #b9384b;
+
+    border: 1px solid rgba(215, 68, 89, 0.18);
+
+    background: #fff2f4;
+}
+
+.form-message.info {
+    color: #4d47a7;
+
+    border: 1px solid rgba(94, 81, 204, 0.18);
+
+    background: #f3f1ff;
+}
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.register-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    width: 100%;
+    min-height: 52px;
+
+    padding: 0 22px;
+
+    color: #ffffff;
+
+    border: 0;
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5848e8,
+            #7d3ee7
+        );
+
+    box-shadow:
+        0 14px 32px
+        rgba(88, 66, 220, 0.3);
+
+    font-size: 0.94rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        opacity 0.22s ease;
+}
+
+.register-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 18px 38px
+        rgba(88, 66, 220, 0.38);
+}
+
+.register-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.register-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.68;
+}
+
+/* =========================================================
+   BUTTON LOADER
+========================================================= */
+
+.button-loader {
+    display: none;
+
+    width: 18px;
+    height: 18px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+
+    animation: registerSpin 0.7s linear infinite;
+}
+
+.register-button.loading .button-loader {
+    display: inline-block;
+}
+
+@keyframes registerSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   DIVIDER AND LOGIN LINK
+========================================================= */
+
+.divider {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 25px 0 17px;
+
+    color: #9297a6;
+
+    font-size: 0.77rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(75, 66, 150, 0.12);
+}
+
+.divider span {
+    padding: 0 12px;
+}
+
+.login-link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    color: #5b4bd6;
+
+    border: 1px solid rgba(90, 74, 210, 0.2);
+    border-radius: 12px;
+
+    background: #faf9ff;
+
+    font-size: 0.88rem;
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.login-link-button:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(90, 74, 210, 0.35);
+
+    background: #f3f0ff;
+}
+
+.back-home {
+    margin-top: 20px;
+
+    text-align: center;
+}
+
+.back-home a {
+    color: #777e90;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.back-home a:hover {
+    color: #5b4bd6;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline:
+        3px solid
+        rgba(104, 84, 227, 0.3);
+
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1080px) {
+
+    .register-page {
+        grid-template-columns:
+            0.9fr 1.1fr;
+    }
+
+    .branding-panel {
+        padding: 38px 5%;
+    }
+
+    .branding-content h1 {
+        font-size:
+            clamp(
+                2.4rem,
+                5vw,
+                3.8rem
+            );
+    }
+
+    .form-panel {
+        padding: 42px 4%;
+    }
+
+    .register-card {
+        padding: 34px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 860px) {
+
+    .register-page {
+        display: block;
+    }
+
+    .branding-panel {
+        display: none;
+    }
+
+    .form-panel {
+        min-height: 100vh;
+
+        padding: 38px 20px;
+    }
+
+    .register-card {
+        width: min(100%, 560px);
+
+        padding: 34px 28px;
+    }
+
+    .mobile-logo {
+        display: flex;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .form-panel {
+        align-items: flex-start;
+
+        padding: 22px 13px;
+    }
+
+    .register-card {
+        padding: 27px 19px;
+
+        border-radius: 20px;
+    }
+
+    .name-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .form-heading h2 {
+        font-size: 1.75rem;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .divider span {
+        padding: 0 8px;
+
+        font-size: 0.7rem;
+
+        text-align: center;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

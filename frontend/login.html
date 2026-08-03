@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sign in to AI Personal Assistant."
+    >
+
+    <title>Login | AI Personal Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="css/login.css"
+    >
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Left Information Panel -->
+
+        <section class="auth-intro">
+
+            <a
+                href="index.html"
+                class="auth-brand"
+            >
+                <span class="brand-icon">🤖</span>
+
+                <span>
+                    AI Personal Assistant
+                </span>
+            </a>
+
+            <div class="intro-content">
+
+                <p class="intro-label">
+                    Intelligent. Secure. Personal.
+                </p>
+
+                <h1>
+                    Welcome Back to Your
+                    <span>AI Assistant</span>
+                </h1>
+
+                <p class="intro-description">
+                    Continue your conversations, upload documents,
+                    use voice commands and access your intelligent
+                    assistant securely.
+                </p>
+
+                <div class="intro-features">
+
+                    <div class="intro-feature">
+
+                        <span class="feature-check">
+                            ✓
+                        </span>
+
+                        <div>
+                            <h3>Secure Authentication</h3>
+
+                            <p>
+                                Protected using Spring Security and JWT.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="intro-feature">
+
+                        <span class="feature-check">
+                            ✓
+                        </span>
+
+                        <div>
+                            <h3>Persistent Conversations</h3>
+
+                            <p>
+                                Continue your previous AI conversations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="intro-feature">
+
+                        <span class="feature-check">
+                            ✓
+                        </span>
+
+                        <div>
+                            <h3>PDF and Voice Support</h3>
+
+                            <p>
+                                Ask questions using documents or voice.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="intro-footer">
+                © 2026 AI Personal Assistant
+            </p>
+
+        </section>
+
+        <!-- Login Form Panel -->
+
+        <section class="auth-form-section">
+
+            <div class="auth-card">
+
+                <a
+                    href="index.html"
+                    class="back-link"
+                >
+                    ← Back to Home
+                </a>
+
+                <div class="mobile-logo">
+                    🤖
+                </div>
+
+                <div class="form-heading">
+
+                    <p class="form-label">
+                        Account Login
+                    </p>
+
+                    <h2>
+                        Welcome Back
+                    </h2>
+
+                    <p>
+                        Enter your account details to continue.
+                    </p>
+
+                </div>
+
+                <form
+                    id="loginForm"
+                    novalidate
+                >
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            id="emailError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a
+                                href="#"
+                                id="forgotPasswordLink"
+                                class="forgot-password"
+                            >
+                                Forgot Password?
+                            </a>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                                title="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            id="passwordError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+                    <div class="remember-row">
+
+                        <label class="remember-option">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                name="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                    <div
+                        id="loginMessage"
+                        class="auth-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="auth-button"
+                    >
+
+                        <span id="loginButtonText">
+                            Sign In
+                        </span>
+
+                        <span
+                            id="loginSpinner"
+                            class="button-spinner"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+                </form>
+
+                <div class="auth-divider">
+
+                    <span>
+                        New to AI Personal Assistant?
+                    </span>
+
+                </div>
+
+                <a
+                    href="register.html"
+                    class="register-link"
+                >
+                    Create New Account
+                </a>
+
+                <p class="security-note">
+                    🔐 Your account information is securely protected.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

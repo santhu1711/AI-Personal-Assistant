@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AI Personal Assistant</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body>
+  <div class="background-animation">
+
+    <div class="glow left"></div>
+
+    <div class="glow right"></div>
+
+    <div class="road"></div>
+
+    <div class="background-car">
+
+        <div class="car-shadow"></div>
+
+        <div class="car-body"></div>
+
+        <div class="car-roof"></div>
+
+        <div class="window left"></div>
+
+        <div class="window right"></div>
+
+        <div class="wheel back"></div>
+
+        <div class="wheel front"></div>
+
+        <div class="headlight"></div>
+
+        <div class="taillight"></div>
+
+    </div>
+
+</div>
+
+  <!-- =====================================================
+       Navigation Bar
+  ====================================================== -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      🤖 AI Personal Assistant
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="login.html">Login</a>
+    </nav>
+
+  </header>
+
+  <!-- =====================================================
+       Hero Section
+  ====================================================== -->
+
+  <section
+    id="home"
+    class="hero"
+  >
+
+    <h1>
+      Build Faster with Your AI Personal Assistant
+    </h1>
+
+    <p>
+      Consistency beats talent when talent stops learning.
+    </p>
+
+    <button
+      id="startBtn"
+      type="button"
+    >
+      Get Started
+    </button>
+
+  </section>
+
+  <!-- =====================================================
+       Features Section
+  ====================================================== -->
+
+  <section
+    id="features"
+    class="features"
+  >
+
+    <div class="card">
+      <h3>💬 AI Chat</h3>
+      <p>Intelligent conversations.</p>
+    </div>
+
+    <div class="card">
+      <h3>📄 PDF + RAG</h3>
+      <p>Chat with documents.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧠 Memory</h3>
+      <p>Conversation continuity.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎤 Voice</h3>
+      <p>Speak with AI.</p>
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       About Section
+  ====================================================== -->
+
+  <section
+    id="about"
+    class="about"
+  >
+
+    <h2>About</h2>
+
+    <p>
+      A production-ready AI chat application inspired by
+      ChatGPT, built with Java, Spring Boot, HTML, CSS,
+      vanilla JavaScript, and modern AI models. It features
+      secure authentication, persistent chat history,
+      multiple conversations, PDF-powered RAG, voice
+      interaction, streaming AI responses, and cloud
+      deployment.
+    </p>
+
+  </section>
+
+  <!-- =====================================================
+       Floating Chat Button
+  ====================================================== -->
+
+  <button
+    id="chatButton"
+    type="button"
+    title="Open AI Assistant"
+    aria-label="Open AI Assistant"
+  >
+    💬
+  </button>
+
+  <!-- =====================================================
+       Chat Window
+  ====================================================== -->
+
+  <div id="chatWindow">
+
+    <div id="chatLayout">
+
+      <!-- Conversation Sidebar -->
+
+      <aside id="conversationSidebar">
+
+        <div class="sidebarHeader">
+
+          <h3>Conversations</h3>
+
+          <button
+            id="newChatButton"
+            type="button"
+            title="Start New Chat"
+            aria-label="Start New Chat"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div id="conversationList">
+
+          <p class="sidebarEmpty">
+            No conversations yet.
+          </p>
+
+        </div>
+
+      </aside>
+
+      <!-- Main Chat Panel -->
+
+      <section id="chatPanel">
+
+        <!-- Chat Header -->
+
+        <div id="chatHeader">
+
+          <div>
+
+            <h3 id="activeConversationTitle">
+              🤖 AI Personal Assistant
+            </h3>
+
+            <small>
+              🟢 Online
+            </small>
+
+          </div>
+
+          <button
+            id="closeChat"
+            type="button"
+            title="Close Chat"
+            aria-label="Close Chat"
+          >
+            ✖
+          </button>
+
+        </div>
+
+        <!-- Chat Messages -->
+
+        <div id="chatBody">
+
+          <div class="message ai">
+            👋 Hello! I'm your AI Personal Assistant.
+            <br><br>
+            How can I help you today?
+          </div>
+
+        </div>
+
+        <!-- Chat Input -->
+
+        <div id="chatFooter">
+
+         <textarea
+    id="userInput"
+    placeholder="Type your message..."
+    rows="1"
+    autocomplete="off"
+></textarea>
+
+          <button
+            id="sendButton"
+            type="button"
+            title="Send Message"
+            aria-label="Send Message"
+          >
+            ➤
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- =====================================================
+       Footer
+  ====================================================== -->
+
+  <footer>
+
+    <p>
+      © 2026 AI Personal Assistant. Designed, Developed,
+      and Maintained by Santhosh S
+    </p>
+
+  </footer>
+
+  <!-- =====================================================
+       JavaScript Libraries
+  ====================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>

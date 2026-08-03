@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Create your AI Personal Assistant account."
+    >
+
+    <title>Create Account | AI Personal Assistant</title>
+
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<body>
+
+    <main class="register-page">
+
+        <!-- Left Branding Section -->
+        <section class="branding-panel">
+
+            <a href="index.html" class="brand-logo">
+                <span class="logo-icon">AI</span>
+                <span class="logo-text">AI Personal Assistant</span>
+            </a>
+
+            <div class="branding-content">
+
+                <span class="section-label">
+                    GET STARTED
+                </span>
+
+                <h1>
+                    Create your account and start building smarter.
+                </h1>
+
+                <p>
+                    Join your intelligent AI workspace designed to help you
+                    learn, create, organize, and solve problems faster.
+                </p>
+
+                <div class="benefits-list">
+
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+
+                        <div>
+                            <h3>AI-Powered Conversations</h3>
+
+                            <p>
+                                Ask questions and receive intelligent,
+                                context-aware responses.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+
+                        <div>
+                            <h3>Secure Personal Workspace</h3>
+
+                            <p>
+                                Keep your conversations and account information
+                                protected.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+
+                        <div>
+                            <h3>Built for Productivity</h3>
+
+                            <p>
+                                Access AI chat, document support, voice tools,
+                                and conversation history.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="branding-footer">
+                Powered by Java, Spring Boot and Artificial Intelligence
+            </p>
+
+        </section>
+
+
+        <!-- Right Registration Section -->
+        <section class="form-panel">
+
+            <div class="register-card">
+
+                <div class="mobile-logo">
+                    <span class="logo-icon">AI</span>
+                    <span class="logo-text">AI Personal Assistant</span>
+                </div>
+
+                <div class="form-heading">
+
+                    <span class="form-label">
+                        CREATE ACCOUNT
+                    </span>
+
+                    <h2>
+                        Start your AI journey
+                    </h2>
+
+                    <p>
+                        Enter your details to create a new account.
+                    </p>
+
+                </div>
+
+
+                <form id="registerForm" novalidate>
+
+                    <div class="name-row">
+
+                        <div class="form-group">
+                            <label for="firstName">
+                                First name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Enter first name"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                            <small
+                                class="error-message"
+                                id="firstNameError"
+                            ></small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="lastName">
+                                Last name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Enter last name"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                            <small
+                                class="error-message"
+                                id="lastNameError"
+                            ></small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="error-message"
+                            id="emailError"
+                        ></small>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="password-hint"
+                        >
+                            Use at least 8 characters with letters and numbers.
+                        </small>
+
+                        <small
+                            class="error-message"
+                            id="passwordError"
+                        ></small>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="confirmPasswordToggle"
+                                aria-label="Show confirm password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="confirmPasswordError"
+                        ></small>
+                    </div>
+
+
+                    <div class="terms-row">
+
+                        <label class="checkbox-container">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
+
+                            <span class="custom-checkbox"></span>
+
+                            <span class="checkbox-text">
+                                I agree to the
+                                <a href="#">Terms of Service</a>
+                                and
+                                <a href="#">Privacy Policy</a>.
+                            </span>
+
+                        </label>
+
+                        <small
+                            class="error-message"
+                            id="termsError"
+                        ></small>
+
+                    </div>
+
+
+                    <div
+                        class="form-message"
+                        id="formMessage"
+                        role="alert"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        class="register-button"
+                        id="registerButton"
+                    >
+                        <span class="button-text">
+                            Create Account
+                        </span>
+
+                        <span
+                            class="button-loader"
+                            id="buttonLoader"
+                        ></span>
+                    </button>
+
+                </form>
+
+
+                <div class="divider">
+                    <span>Already registered?</span>
+                </div>
+
+
+                <a href="login.html" class="login-link-button">
+                    Sign In to Your Account
+                </a>
+
+
+                <p class="back-home">
+                    <a href="index.html">
+                        ← Back to Home
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/register.js"></script>
+
+</body>
+</html>

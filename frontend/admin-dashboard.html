@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AI Personal Assistant administration dashboard."
+    >
+
+    <title>
+        Admin Dashboard | AI Personal Assistant
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin-dashboard.css"
+    >
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- =============================================
+             SIDEBAR
+        ============================================== -->
+
+        <aside
+            id="adminSidebar"
+            class="admin-sidebar"
+        >
+
+            <div class="admin-brand">
+
+                <div class="admin-brand-icon">
+                    🤖
+                </div>
+
+                <div>
+
+                    <strong>
+                        AI Personal Assistant
+                    </strong>
+
+                    <small>
+                        Administration
+                    </small>
+
+                </div>
+
+            </div>
+
+            <nav class="admin-navigation">
+
+                <button
+                    class="admin-nav-item active"
+                    type="button"
+                    data-section="overview"
+                >
+                    <span>▦</span>
+                    Overview
+                </button>
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-section="users"
+                >
+                    <span>👥</span>
+                    Users
+                </button>
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-section="feedback"
+                >
+                    <span>💬</span>
+                    Feedback
+                </button>
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-section="analytics"
+                >
+                    <span>📊</span>
+                    Activity Analytics
+                </button>
+
+            </nav>
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="dashboard.html"
+                    class="back-dashboard-link"
+                >
+                    ← Back to Assistant
+                </a>
+
+                <button
+                    id="adminLogoutButton"
+                    class="admin-logout-button"
+                    type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- =============================================
+             MAIN AREA
+        ============================================== -->
+
+        <main class="admin-main">
+
+            <div
+                class="dancer-watermark"
+                aria-hidden="true"
+            ></div>
+
+            <!-- Header -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-header-label">
+                        Administration
+                    </p>
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                    <p>
+                        Monitor users, feedback and application activity.
+                    </p>
+
+                </div>
+
+                <div class="admin-profile">
+
+                    <div
+                        id="adminAvatar"
+                        class="admin-avatar"
+                    >
+                        S
+                    </div>
+
+                    <div>
+
+                        <strong id="adminName">
+                            Santhosh
+                        </strong>
+
+                        <small id="adminEmail">
+                            admin@example.com
+                        </small>
+
+                    </div>
+
+                    <span class="admin-role-badge">
+                        ADMIN
+                    </span>
+
+                </div>
+
+            </header>
+
+            <!-- =============================================
+                 OVERVIEW SECTION
+            ============================================== -->
+
+            <section
+                id="overviewSection"
+                class="admin-section active"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Overview
+                        </h2>
+
+                        <p>
+                            A summary of your platform performance.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="refreshAdminButton"
+                        class="refresh-admin-button"
+                        type="button"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+                <div class="overview-grid">
+
+                    <article class="overview-card">
+
+                        <div class="overview-card-icon">
+                            👥
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Total Users
+                            </small>
+
+                            <strong id="totalUsersValue">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                    <article class="overview-card">
+
+                        <div class="overview-card-icon">
+                            🟢
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Active Today
+                            </small>
+
+                            <strong id="activeTodayValue">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                    <article class="overview-card">
+
+                        <div class="overview-card-icon">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Total Feedback
+                            </small>
+
+                            <strong id="totalFeedbackValue">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                    <article class="overview-card">
+
+                        <div class="overview-card-icon">
+                            ⭐
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Average Rating
+                            </small>
+
+                            <strong id="averageRatingValue">
+                                0.0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="admin-content-grid">
+
+                    <!-- Activity Summary -->
+
+                    <article class="admin-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <h3>
+                                    User Activity
+                                </h3>
+
+                                <p>
+                                    Recently active accounts.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="activity-summary">
+
+                            <div>
+
+                                <span>
+                                    Today
+                                </span>
+
+                                <strong id="activeTodaySummary">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Last 7 Days
+                                </span>
+
+                                <strong id="activeWeekValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Last 30 Days
+                                </span>
+
+                                <strong id="activeMonthValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Rating Distribution -->
+
+                    <article class="admin-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <h3>
+                                    Rating Distribution
+                                </h3>
+
+                                <p>
+                                    Feedback grouped by rating.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="rating-distribution">
+
+                            <div class="rating-row">
+
+                                <span>
+                                    5★
+                                </span>
+
+                                <div class="rating-track">
+
+                                    <div
+                                        id="fiveStarBar"
+                                        class="rating-bar"
+                                    ></div>
+
+                                </div>
+
+                                <strong id="fiveStarValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="rating-row">
+
+                                <span>
+                                    4★
+                                </span>
+
+                                <div class="rating-track">
+
+                                    <div
+                                        id="fourStarBar"
+                                        class="rating-bar"
+                                    ></div>
+
+                                </div>
+
+                                <strong id="fourStarValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="rating-row">
+
+                                <span>
+                                    3★
+                                </span>
+
+                                <div class="rating-track">
+
+                                    <div
+                                        id="threeStarBar"
+                                        class="rating-bar"
+                                    ></div>
+
+                                </div>
+
+                                <strong id="threeStarValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="rating-row">
+
+                                <span>
+                                    2★
+                                </span>
+
+                                <div class="rating-track">
+
+                                    <div
+                                        id="twoStarBar"
+                                        class="rating-bar"
+                                    ></div>
+
+                                </div>
+
+                                <strong id="twoStarValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="rating-row">
+
+                                <span>
+                                    1★
+                                </span>
+
+                                <div class="rating-track">
+
+                                    <div
+                                        id="oneStarBar"
+                                        class="rating-bar"
+                                    ></div>
+
+                                </div>
+
+                                <strong id="oneStarValue">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- =============================================
+                 USERS SECTION
+            ============================================== -->
+
+            <section
+                id="usersSection"
+                class="admin-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Users
+                        </h2>
+
+                        <p>
+                            View registered accounts and activity.
+                        </p>
+
+                    </div>
+
+                    <input
+                        id="userSearchInput"
+                        class="admin-search-input"
+                        type="search"
+                        placeholder="Search users..."
+                    >
+
+                </div>
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    User
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Last Login
+                                </th>
+
+                                <th>
+                                    Last Active
+                                </th>
+
+                                <th>
+                                    Logins
+                                </th>
+
+                                <th>
+                                    Messages
+                                </th>
+
+                                <th>
+                                    Conversations
+                                </th>
+
+                                <th>
+                                    PDFs
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="adminUsersTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="table-empty-state"
+                                >
+                                    Loading users...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- =============================================
+                 FEEDBACK SECTION
+            ============================================== -->
+
+            <section
+                id="feedbackSection"
+                class="admin-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Feedback
+                        </h2>
+
+                        <p>
+                            Review ratings, suggestions and bug reports.
+                        </p>
+
+                    </div>
+
+                    <div class="feedback-filters">
+
+                        <input
+                            id="feedbackSearchInput"
+                            class="admin-search-input"
+                            type="search"
+                            placeholder="Search feedback..."
+                        >
+
+                        <select
+                            id="ratingFilterSelect"
+                            class="admin-filter-select"
+                        >
+
+                            <option value="">
+                                All Ratings
+                            </option>
+
+                            <option value="5">
+                                5 Stars
+                            </option>
+
+                            <option value="4">
+                                4 Stars
+                            </option>
+
+                            <option value="3">
+                                3 Stars
+                            </option>
+
+                            <option value="2">
+                                2 Stars
+                            </option>
+
+                            <option value="1">
+                                1 Star
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="feedbackCards"
+                    class="feedback-cards"
+                >
+
+                    <div class="table-empty-state">
+                        Loading feedback...
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =============================================
+                 ANALYTICS SECTION
+            ============================================== -->
+
+            <section
+                id="analyticsSection"
+                class="admin-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Activity Analytics
+                        </h2>
+
+                        <p>
+                            Understand how people are using the platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="analytics-grid">
+
+                    <article class="analytics-card">
+
+                        <small>
+                            Total Logins
+                        </small>
+
+                        <strong id="totalLoginCount">
+                            0
+                        </strong>
+
+                    </article>
+
+                    <article class="analytics-card">
+
+                        <small>
+                            Total Messages
+                        </small>
+
+                        <strong id="totalMessageCount">
+                            0
+                        </strong>
+
+                    </article>
+
+                    <article class="analytics-card">
+
+                        <small>
+                            Total Conversations
+                        </small>
+
+                        <strong id="totalConversationCount">
+                            0
+                        </strong>
+
+                    </article>
+
+                    <article class="analytics-card">
+
+                        <small>
+                            Total PDF Uploads
+                        </small>
+
+                        <strong id="totalPdfUploadCount">
+                            0
+                        </strong>
+
+                    </article>
+
+                </div>
+
+                <article class="admin-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <h3>
+                                Most Active Users
+                            </h3>
+
+                            <p>
+                                Accounts with the highest message activity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="mostActiveUsersList"
+                        class="most-active-users"
+                    ></div>
+
+                </article>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- =============================================
+         WELCOME TOAST
+    ============================================== -->
+
+    <div
+        id="adminWelcomeToast"
+        class="admin-welcome-toast"
+        hidden
+    >
+
+        <span>
+            ✨
+        </span>
+
+        <div>
+
+            <strong>
+                Welcome back, Santhosh
+            </strong>
+
+            <small>
+                Your dashboard is ready.
+            </small>
+
+        </div>
+
+    </div>
+
+    <!-- =============================================
+         LOADING
+    ============================================== -->
+
+    <div
+        id="adminLoadingOverlay"
+        class="admin-loading-overlay"
+        hidden
+    >
+
+        <div class="admin-loader"></div>
+
+        <p>
+            Loading admin dashboard...
+        </p>
+
+    </div>
+
+    <!-- =============================================
+         JAVASCRIPT
+    ============================================== -->
+
+    <script src="js/admin-dashboard.js"></script>
+
+</body>
+
+</html>
