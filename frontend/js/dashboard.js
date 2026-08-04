@@ -6,9 +6,8 @@
 ========================================================== */
 
 const Dashboard = {
-
-   apiBaseUrl:
-    "https://ai-personal-assistant-production-2cfc.up.railway.app",
+apiBaseUrl:
+    "https://ai-personal-assistant-production-2cfc.up.railway.app/api",
 
 token: null,
     currentUser: null,
