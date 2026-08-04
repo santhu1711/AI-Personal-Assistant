@@ -39,11 +39,12 @@ public class SecurityConfig {
 
         CorsConfiguration configuration =
                 new CorsConfiguration();
-configuration.setAllowedOrigins(
+configuration.setAllowedOriginPatterns(
         List.of(
                 "http://127.0.0.1:5500",
                 "http://localhost:5500",
-                "https://ai-personal-assistant-sable.vercel.app"
+                "https://ai-personal-assistant-sable.vercel.app",
+                "https://ai-personal-assistant-*.vercel.app"
         )
 );
 
