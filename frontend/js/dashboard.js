@@ -7,11 +7,10 @@
 
 const Dashboard = {
 
-    apiBaseUrl:
-        "http://localhost:8080/api",
+   apiBaseUrl:
+    "https://ai-personal-assistant-production-2cfc.up.railway.app",
 
-    token: null,
-
+token: null,
     currentUser: null,
 
     activeConversationId: null,

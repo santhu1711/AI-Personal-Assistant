@@ -3,15 +3,15 @@
    Script.js
    Part 1 - Constants, Application State & DOM References
    ========================================================== */
-const API_BASE_URL = "http://localhost:8080";
+
+const API_BASE_URL = "https://ai-personal-assistant-production-2cfc.up.railway.app";
 
 /* =========================
    API Configuration
 ========================= */
 
 const API = {
-
-    BASE_URL: "http://localhost:8080",
+    BASE_URL: "https://ai-personal-assistant-production-2cfc.up.railway.app",
 
     LOGIN: "/api/auth/login",
 
@@ -24,7 +24,6 @@ const API = {
     PDF_UPLOAD: "/api/pdf/upload",
 
     RAG: "/api/rag",
-
 };
 
 

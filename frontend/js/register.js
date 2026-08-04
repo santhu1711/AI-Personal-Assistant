@@ -443,7 +443,7 @@ RegisterPage.validateForm = function () {
 ========================================================== */
 
 RegisterPage.apiUrl =
-    "http://localhost:8080/api/auth/register";
+    "https://ai-personal-assistant-production-2cfc.up.railway.app"
 
 
 RegisterPage.togglePasswordVisibility = function (

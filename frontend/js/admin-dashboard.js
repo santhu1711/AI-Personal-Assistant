@@ -7,10 +7,10 @@
 const AdminDashboard = {
 
     apiBaseUrl:
-        "http://localhost:8080/api",
+    "https://ai-personal-assistant-production-2cfc.up.railway.app",
 
-    token:
-        null,
+token:
+    null,
 
     currentAdminEmail:
         "",
