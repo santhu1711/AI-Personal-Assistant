@@ -302,7 +302,7 @@ LoginPage.validateForm = function () {
 ========================================================== */
 
 LoginPage.apiUrl =
-    "http://localhost:8080/api/auth/login";
+    "https://ai-personal-assistant-production-2cfc.up.railway.app/api/auth/login";
 
 
 LoginPage.togglePasswordVisibility = function () {

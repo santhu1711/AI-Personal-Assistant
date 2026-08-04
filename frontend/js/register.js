@@ -441,9 +441,8 @@ RegisterPage.validateForm = function () {
 /* ==========================================================
    PART 3: PASSWORD TOGGLE, API CALL AND LOADING STATE
 ========================================================== */
-
 RegisterPage.apiUrl =
-    "https://ai-personal-assistant-production-2cfc.up.railway.app"
+    "https://ai-personal-assistant-production-2cfc.up.railway.app/api/auth/register";
 
 
 RegisterPage.togglePasswordVisibility = function (
