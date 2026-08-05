@@ -41,8 +41,8 @@ public class ChatHistoryService {
             UserRepository userRepository,
             DocumentRepository documentRepository,
             OpenRouterService openRouterService,
-RagService ragService,
-UserStatisticsService userStatisticsService
+            RagService ragService,
+            UserStatisticsService userStatisticsService
     ) {
         this.conversationRepository =
                 conversationRepository;
@@ -61,10 +61,12 @@ UserStatisticsService userStatisticsService
 
         this.ragService =
                 ragService;
-    this.userStatisticsService =
-        userStatisticsService;
-        }
 
+        this.userStatisticsService =
+                userStatisticsService;
+    }
+
+    @Transactional
     public ConversationResponse createConversation(
             String email,
             String title
@@ -87,10 +89,11 @@ UserStatisticsService userStatisticsService
                 conversationRepository.save(
                         conversation
                 );
-                userStatisticsService
-        .incrementConversationCount(
-                user
-        );
+
+        userStatisticsService
+                .incrementConversationCount(
+                        user
+                );
 
         return toConversationResponse(
                 savedConversation
@@ -151,6 +154,7 @@ UserStatisticsService userStatisticsService
         );
     }
 
+    @Transactional
     public MessageResponse saveMessage(
             Long conversationId,
             String email,
@@ -179,10 +183,7 @@ UserStatisticsService userStatisticsService
                                 conversation
                         )
                 );
-userStatisticsService
-        .incrementMessageCount(
-                conversation.getUser()
-        );
+
         if (
                 "USER".equalsIgnoreCase(
                         sender
@@ -192,6 +193,11 @@ userStatisticsService
                     conversation,
                     cleanContent
             );
+
+            userStatisticsService
+                    .incrementMessageCount(
+                            conversation.getUser()
+                    );
         }
 
         updateConversationTime(
@@ -270,6 +276,7 @@ userStatisticsService
         );
     }
 
+    @Transactional
     public AIChatResponse sendMessageToAI(
             Long conversationId,
             String email,
@@ -302,7 +309,11 @@ userStatisticsService
                                 conversation
                         )
                 );
-                
+
+        userStatisticsService
+                .incrementMessageCount(
+                        conversation.getUser()
+                );
 
         String aiPrompt =
                 buildAiPrompt(
@@ -372,6 +383,11 @@ userStatisticsService
                                     conversation
                             )
                     );
+
+                    userStatisticsService
+                            .incrementMessageCount(
+                                    conversation.getUser()
+                            );
 
                     updateConversationTime(
                             conversation
