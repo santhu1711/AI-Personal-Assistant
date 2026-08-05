@@ -6,6 +6,10 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 @Service
 public class PdfTextExtractorService {
 
@@ -14,49 +18,76 @@ public class PdfTextExtractorService {
     ) {
 
         if (file == null || file.isEmpty()) {
-
             throw new RuntimeException(
                     "PDF file is empty."
             );
         }
 
-        try (
+        File temporaryFile = null;
 
-                PDDocument document =
-                        Loader.loadPDF(
-                                file.getBytes()
-                        )
+        try {
 
-        ) {
+            temporaryFile =
+                    Files.createTempFile(
+                            "uploaded-document-",
+                            ".pdf"
+                    ).toFile();
 
-            PDFTextStripper stripper =
-                    new PDFTextStripper();
+            file.transferTo(
+                    temporaryFile
+            );
 
-            String text =
-                    stripper.getText(
-                            document
-                    );
-
-            if (
-                    text == null ||
-                    text.isBlank()
+            try (
+                    PDDocument document =
+                            Loader.loadPDF(
+                                    temporaryFile
+                            )
             ) {
 
-                throw new RuntimeException(
-                        "No readable text found inside the PDF."
-                );
+                PDFTextStripper stripper =
+                        new PDFTextStripper();
+
+                String text =
+                        stripper.getText(
+                                document
+                        );
+
+                if (
+                        text == null ||
+                        text.isBlank()
+                ) {
+                    throw new RuntimeException(
+                            "No readable text found inside the PDF."
+                    );
+                }
+
+                return text.trim();
             }
 
-            return text.trim();
-
-        } catch (Exception exception) {
+        } catch (IOException exception) {
 
             throw new RuntimeException(
                     "Failed to extract text from PDF.",
                     exception
             );
+
+        } finally {
+
+            if (
+                    temporaryFile != null &&
+                    temporaryFile.exists()
+            ) {
+                try {
+                    Files.deleteIfExists(
+                            temporaryFile.toPath()
+                    );
+                } catch (IOException exception) {
+                    System.err.println(
+                            "Could not delete temporary PDF file: "
+                                    + temporaryFile.getAbsolutePath()
+                    );
+                }
+            }
         }
-
     }
-
 }
