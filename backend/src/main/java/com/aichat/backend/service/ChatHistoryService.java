@@ -33,6 +33,7 @@ public class ChatHistoryService {
     private final DocumentRepository documentRepository;
     private final OpenRouterService openRouterService;
     private final RagService ragService;
+    private final UserStatisticsService userStatisticsService;
 
     public ChatHistoryService(
             ConversationRepository conversationRepository,
@@ -40,7 +41,8 @@ public class ChatHistoryService {
             UserRepository userRepository,
             DocumentRepository documentRepository,
             OpenRouterService openRouterService,
-            RagService ragService
+RagService ragService,
+UserStatisticsService userStatisticsService
     ) {
         this.conversationRepository =
                 conversationRepository;
@@ -59,7 +61,9 @@ public class ChatHistoryService {
 
         this.ragService =
                 ragService;
-    }
+    this.userStatisticsService =
+        userStatisticsService;
+        }
 
     public ConversationResponse createConversation(
             String email,
@@ -83,6 +87,10 @@ public class ChatHistoryService {
                 conversationRepository.save(
                         conversation
                 );
+                userStatisticsService
+        .incrementConversationCount(
+                user
+        );
 
         return toConversationResponse(
                 savedConversation
@@ -171,7 +179,10 @@ public class ChatHistoryService {
                                 conversation
                         )
                 );
-
+userStatisticsService
+        .incrementMessageCount(
+                conversation.getUser()
+        );
         if (
                 "USER".equalsIgnoreCase(
                         sender
@@ -291,6 +302,7 @@ public class ChatHistoryService {
                                 conversation
                         )
                 );
+                
 
         String aiPrompt =
                 buildAiPrompt(

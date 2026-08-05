@@ -25,6 +25,8 @@ public class DocumentService {
 
     private final DocumentChunkService documentChunkService;
 
+    private final UserStatisticsService userStatisticsService;
+
     public DocumentService(
 
             DocumentRepository documentRepository,
@@ -33,7 +35,9 @@ public class DocumentService {
 
             PdfTextExtractorService pdfTextExtractorService,
 
-            DocumentChunkService documentChunkService
+            DocumentChunkService documentChunkService,
+
+            UserStatisticsService userStatisticsService
 
     ) {
 
@@ -49,8 +53,12 @@ public class DocumentService {
         this.documentChunkService =
                 documentChunkService;
 
+        this.userStatisticsService =
+                userStatisticsService;
+
     }
 
+    @Transactional
     public DocumentResponse uploadDocument(
 
             MultipartFile file,
@@ -118,14 +126,6 @@ public class DocumentService {
                         document
                 );
 
-        /*
-         * NEW STEP
-         *
-         * Automatically split
-         * the extracted text
-         * into chunks.
-         */
-
         documentChunkService.createChunks(
 
                 savedDocument,
@@ -133,6 +133,11 @@ public class DocumentService {
                 extractedText
 
         );
+
+        userStatisticsService
+                .incrementPdfUploadCount(
+                        user
+                );
 
         return toDocumentResponse(
 
@@ -208,7 +213,8 @@ public class DocumentService {
         return document.getExtractedText();
 
     }
-        @Transactional
+
+    @Transactional
     public void deleteDocument(
 
             Long documentId,
@@ -379,7 +385,8 @@ public class DocumentService {
                 );
 
     }
-        private DocumentResponse toDocumentResponse(
+
+    private DocumentResponse toDocumentResponse(
 
             Document document
 
@@ -398,7 +405,6 @@ public class DocumentService {
                 document.getUploadedAt()
 
         );
-        
 
     }
 
