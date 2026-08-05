@@ -26,6 +26,13 @@ public class UserStatisticsService {
                         user.getId()
                 );
 
+        System.out.println(
+                "[STATISTICS] Message count update"
+                        + " | userId=" + user.getId()
+                        + " | email=" + user.getEmail()
+                        + " | updatedRows=" + updatedRows
+        );
+
         validateUpdate(
                 updatedRows,
                 "message"
@@ -42,6 +49,13 @@ public class UserStatisticsService {
                         user.getId()
                 );
 
+        System.out.println(
+                "[STATISTICS] Conversation count update"
+                        + " | userId=" + user.getId()
+                        + " | email=" + user.getEmail()
+                        + " | updatedRows=" + updatedRows
+        );
+
         validateUpdate(
                 updatedRows,
                 "conversation"
@@ -57,6 +71,13 @@ public class UserStatisticsService {
                 userRepository.incrementPdfUploadCount(
                         user.getId()
                 );
+
+        System.out.println(
+                "[STATISTICS] PDF upload count update"
+                        + " | userId=" + user.getId()
+                        + " | email=" + user.getEmail()
+                        + " | updatedRows=" + updatedRows
+        );
 
         validateUpdate(
                 updatedRows,
