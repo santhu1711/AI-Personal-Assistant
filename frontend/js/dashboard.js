@@ -2805,8 +2805,12 @@ try {
         );
 
         await this.streamAiResponse(
-            message
-        );
+    message
+);
+
+this.incrementFeedbackMessageCount();
+
+this.checkFeedbackEligibility();
 
     } catch (error) {
 
@@ -3879,12 +3883,56 @@ Dashboard.hasSubmittedFeedback = function () {
 };
 
 
+Dashboard.getFeedbackMessageCountKey = function () {
+
+    const email =
+        this.currentUser?.email ||
+        "anonymous";
+
+    return `feedbackMessageCount:${email}`;
+};
+
+
 Dashboard.getUserMessageCount = function () {
 
-    return this.messages.filter(
-        message =>
-            message.sender === "USER"
-    ).length;
+    const savedCount =
+        Number(
+            localStorage.getItem(
+                this.getFeedbackMessageCountKey()
+            )
+        ) || 0;
+
+    const currentConversationCount =
+        this.messages.filter(
+            message =>
+                message.sender === "USER"
+        ).length;
+
+    return Math.max(
+        savedCount,
+        currentConversationCount
+    );
+};
+
+
+Dashboard.incrementFeedbackMessageCount = function () {
+
+    if (
+        this.hasSubmittedFeedback()
+    ) {
+        return;
+    }
+
+    const currentCount =
+        this.getUserMessageCount();
+
+    const updatedCount =
+        currentCount + 1;
+
+    localStorage.setItem(
+        this.getFeedbackMessageCountKey(),
+        String(updatedCount)
+    );
 };
 
 
@@ -3997,27 +4045,17 @@ Dashboard.resetFeedbackForm = function () {
 Dashboard.shouldShowFeedback = function () {
 
     if (
-        this.hasSubmittedFeedback() ||
-        !this.feedbackTimerStartedAt
+        this.hasSubmittedFeedback()
     ) {
-
         return false;
     }
 
-    const fiveMinutes =
-        5 * 60 * 1000;
-
-    const hasUsedAppLongEnough =
-        Date.now() -
-        this.feedbackTimerStartedAt >=
-        fiveMinutes;
-
-    const hasEnoughMessages =
-        this.getUserMessageCount() >= 10;
+    const feedbackMessageThreshold =
+        10;
 
     return (
-        hasUsedAppLongEnough &&
-        hasEnoughMessages
+        this.getUserMessageCount() >=
+        feedbackMessageThreshold
     );
 };
 
@@ -4173,6 +4211,9 @@ Dashboard.submitFeedback = async function () {
             this.getFeedbackStorageKey(),
             "true"
         );
+        localStorage.removeItem(
+    this.getFeedbackMessageCountKey()
+);
 
         this.closeFeedbackModal();
 
@@ -5095,7 +5136,7 @@ Dashboard.initialize = async function () {
 
    this.attachEvents();
 
-this.startFeedbackTracking();
+this.checkFeedbackEligibility();
 
 this.updateSendButtonState();
 
