@@ -3,7 +3,6 @@ package com.aichat.backend.service;
 import com.aichat.backend.entity.User;
 import com.aichat.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserStatisticsService {
@@ -17,84 +16,77 @@ public class UserStatisticsService {
                 userRepository;
     }
 
-    @Transactional
     public void incrementMessageCount(
             User user
     ) {
-        if (user == null) {
-            return;
-        }
+        validateUser(user);
 
-        Long currentCount =
-                user.getMessageCount();
+        int updatedRows =
+                userRepository.incrementMessageCount(
+                        user.getId()
+                );
 
-        if (currentCount == null) {
-            currentCount = 0L;
-        }
-
-        user.setMessageCount(
-                currentCount + 1
+        validateUpdate(
+                updatedRows,
+                "message"
         );
-
-        userRepository.save(user);
     }
 
-    @Transactional
     public void incrementConversationCount(
             User user
     ) {
-        if (user == null) {
-            return;
-        }
+        validateUser(user);
 
-        Long currentCount =
-                user.getConversationCount();
+        int updatedRows =
+                userRepository.incrementConversationCount(
+                        user.getId()
+                );
 
-        if (currentCount == null) {
-            currentCount = 0L;
-        }
-
-        user.setConversationCount(
-                currentCount + 1
+        validateUpdate(
+                updatedRows,
+                "conversation"
         );
-
-        userRepository.save(user);
     }
 
-    @Transactional
     public void incrementPdfUploadCount(
             User user
     ) {
-        if (user == null) {
-            return;
-        }
+        validateUser(user);
 
-        Long currentCount =
-                user.getPdfUploadCount();
+        int updatedRows =
+                userRepository.incrementPdfUploadCount(
+                        user.getId()
+                );
 
-        if (currentCount == null) {
-            currentCount = 0L;
-        }
-
-        user.setPdfUploadCount(
-                currentCount + 1
+        validateUpdate(
+                updatedRows,
+                "PDF upload"
         );
-
-        userRepository.save(user);
     }
 
-    @Transactional
-    public void resetStatistics(
+    private void validateUser(
             User user
     ) {
-        if (user == null) {
-            return;
+        if (
+                user == null ||
+                user.getId() == null
+        ) {
+            throw new RuntimeException(
+                    "A valid user is required to update statistics."
+            );
         }
+    }
 
-        user.setMessageCount(0L);
-        user.setConversationCount(0L);
-        user.setPdfUploadCount(0L);
-
-        userRepository.save(user);
+    private void validateUpdate(
+            int updatedRows,
+            String statisticName
+    ) {
+        if (updatedRows == 0) {
+            throw new RuntimeException(
+                    "Failed to update "
+                            + statisticName
+                            + " statistics."
+            );
+        }
     }
 }
