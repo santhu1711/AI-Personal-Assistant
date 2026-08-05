@@ -2912,6 +2912,8 @@ Dashboard.streamAiResponse = async function (
                 new Date()
                     .toISOString()
         };
+        signal:
+    this.streamController.signal
 
         renderedAssistant =
             this.renderMessage(
