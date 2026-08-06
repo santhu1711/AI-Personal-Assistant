@@ -1,4 +1,6 @@
-# 🤖 AI Personal Assistant
+# 🧠 NovaMind – AI Personal Assistant
+
+<p align="center">
 
 ![Java](https://img.shields.io/badge/Java-21-red?style=for-the-badge&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot)
@@ -10,66 +12,97 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript)
 ![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-A full-stack AI Personal Assistant built using Java, Spring Boot, MySQL, JWT Authentication, OpenRouter AI, and PDF RAG.
+</p>
 
-This project provides an intelligent AI assistant capable of chatting with users, answering questions from uploaded PDF documents, maintaining conversation history, collecting user feedback, and offering an admin dashboard for analytics.
+---
+
+## 🚀 Live Demo
+
+### 🌐 Frontend
+
+https://ai-personal-assistant-sable.vercel.app
+
+### ⚙️ Backend API
+
+https://ai-personal-assistant-production-2cfc.up.railway.app
+
+---
+
+# 📖 Overview
+
+NovaMind is a production-ready AI Personal Assistant built using **Java**, **Spring Boot**, **MySQL**, **JWT Authentication**, **OpenRouter AI**, and **Retrieval-Augmented Generation (RAG)**.
+
+It provides an intelligent conversational experience with secure authentication, persistent conversations, AI-powered PDF understanding, feedback collection, and an administration dashboard for analytics.
 
 ---
 
 # ✨ Features
 
-## Authentication
+## 🔐 Authentication
 
 - User Registration
 - User Login
 - JWT Authentication
-- Role-Based Access (Admin/User)
+- Role-Based Authorization
 - Remember Me
-- Secure Password Storage
+- Secure Password Encryption
 
 ---
 
-## AI Chat
+## 🤖 AI Chat
 
-- AI Conversation
-- Chat History
+- AI Conversations
+- Streaming Responses
 - Multiple Conversations
+- Persistent Chat History
 - Rename Conversations
 - Delete Conversations
+- Edit Messages
 - Regenerate AI Responses
+- Markdown Rendering
 
 ---
 
-## PDF RAG
+## 📄 PDF RAG
 
 - Upload PDF Documents
 - Extract PDF Text
-- Intelligent Context Retrieval
-- Ask Questions about Uploaded PDFs
-- Context-aware AI Responses
+- Intelligent Document Chunking
+- Context Retrieval
+- Ask Questions About Uploaded PDFs
+- Context-Aware AI Responses
 
 ---
 
-## Dashboard
+## 🎤 Voice Features
 
-- Beautiful Modern UI
-- Responsive Design
+- Voice Input
+- Speech Recognition Support
+
+---
+
+## 🖥 Dashboard
+
+- Modern Responsive UI
+- Light & Dark Theme
 - Conversation Sidebar
+- Conversation Search
 - User Profile
-- Theme Support
+- PDF Context Banner
 
 ---
 
-## Feedback System
+## ⭐ Feedback System
 
 - 5-Star Rating
-- User Suggestions
+- Suggestions
 - Bug Reports
+- Automatic Feedback Popup
 - Feedback Analytics
 
 ---
 
-## Admin Dashboard
+## 📊 Admin Dashboard
 
 - Total Users
 - Active Users
@@ -77,10 +110,11 @@ This project provides an intelligent AI assistant capable of chatting with users
 - Average Rating
 - Rating Distribution
 - User Management
+- User Activity Statistics
 
 ---
 
-# 🛠 Tech Stack
+# 🛠 Technology Stack
 
 ## Frontend
 
@@ -88,26 +122,38 @@ This project provides an intelligent AI assistant capable of chatting with users
 - CSS3
 - JavaScript
 
+---
+
 ## Backend
 
-- Java
+- Java 21
 - Spring Boot
 - Spring Security
 - Spring Data JPA
+- REST APIs
 - Maven
+
+---
 
 ## Database
 
 - MySQL
 
-## AI
+---
+
+## Artificial Intelligence
 
 - OpenRouter API
-- GPT-4o Mini
+- GPT Models
+- Retrieval-Augmented Generation (RAG)
+
+---
 
 ## Authentication
 
 - JWT
+
+---
 
 ## PDF Processing
 
@@ -115,40 +161,55 @@ This project provides an intelligent AI assistant capable of chatting with users
 
 ---
 
+## Deployment
+
+- Railway
+- Vercel
+
+---
+
 # 📂 Project Structure
 
 ```
-AI-CHAT-WIDGET
+AI-Personal-Assistant
 
-├── frontend
-│ ├── css
-│ ├── js
-│ ├── login.html
-│ ├── register.html
-│ ├── dashboard.html
-│ └── admin-dashboard.html
-│
 ├── backend
-│ ├── controller
-│ ├── service
-│ ├── repository
-│ ├── entity
-│ ├── dto
-│ ├── security
-│ └── config
+│
+├── controller
+├── service
+├── repository
+├── entity
+├── dto
+├── security
+├── config
+│
+├── frontend
+│
+├── css
+├── js
+├── login.html
+├── register.html
+├── dashboard.html
+├── admin-dashboard.html
+│
+├── screenshots
 │
 └── README.md
 ```
 
 ---
 
-# 🚀 Features Implemented
+# 🚀 Implemented Features
 
 - Authentication System
 - JWT Security
 - AI Chat
+- Streaming Responses
 - Conversation History
+- Edit Messages
+- Regenerate Responses
 - PDF RAG
+- PDF Upload
 - Feedback Module
 - Admin Dashboard
 - User Analytics
@@ -159,100 +220,186 @@ AI-CHAT-WIDGET
 
 # 📸 Screenshots
 
-## Home Page
+## 🏠 Home Page
 
-![Home Page](screenshots/home-page.png)
+![Home](screenshots/home-page.png)
 
 ---
 
-## Login Page
+## 🔑 Login
 
 ![Login](screenshots/login-page.png)
 
 ---
 
-## Register Page
+## 📝 Register
 
 ![Register](screenshots/register-page.png)
 
 ---
 
-## User Dashboard
+## 💬 Dashboard
 
 ![Dashboard](screenshots/dashboard.png)
 
 ---
 
-## PDF RAG
+## 📄 PDF Chat
 
-![PDF RAG](screenshots/pdf-rag.png)
+![PDF](screenshots/pdf-rag.png)
 
 ---
 
-## Feedback System
+## ⭐ Feedback
 
 ![Feedback](screenshots/feedback.png)
 
 ---
 
-## Admin Dashboard
+## 📊 Admin Dashboard
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
-# 🏗️ System Architecture
+![Admin](screenshots/admin-dashboard.png)
+
+---
+
+# 🏗 System Architecture
 
 ```mermaid
 flowchart TD
 
-    A[User Browser] --> B[Frontend<br/>HTML, CSS, JavaScript]
+A[User Browser]
 
-    B --> C[Spring Boot REST API]
+A --> B[Frontend]
 
-    C --> D[JWT Authentication]
-    C --> E[MySQL Database]
-    C --> F[OpenRouter AI API]
-    C --> G[PDF RAG Engine]
+B --> C[Spring Boot REST API]
 
-    G --> H[PDF Text Extraction]
-    H --> I[Document Chunking]
-    I --> J[Relevant Context Retrieval]
-    J --> F
+C --> D[JWT Authentication]
 
-    C --> K[Feedback System]
-    C --> L[Admin Dashboard APIs]
+C --> E[MySQL]
 
-    E --> M[Users]
-    E --> N[Conversations]
-    E --> O[Messages]
-    E --> P[Documents]
-    E --> Q[Document Chunks]
-    E --> R[Feedback]
-    
+C --> F[OpenRouter AI]
+
+C --> G[RAG Engine]
+
+G --> H[PDF Text Extraction]
+
+H --> I[Document Chunking]
+
+I --> J[Context Retrieval]
+
+J --> F
+
+C --> K[Feedback Module]
+
+C --> L[Admin Dashboard]
+
+E --> M[Users]
+
+E --> N[Conversations]
+
+E --> O[Messages]
+
+E --> P[Documents]
+
+E --> Q[Document Chunks]
+
+E --> R[Feedback]
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/santhu1711/AI-Personal-Assistant.git
+```
+
+---
+
+## Backend
+
+```bash
+cd backend
+
+./mvnw spring-boot:run
+```
+
+---
+
+## Frontend
+
+Open
+
+```
+frontend/index.html
+```
+
+or run using **VS Code Live Server**.
+
+---
+
 # 🌐 Deployment
 
-Frontend:
-- (Coming Soon)
+## Frontend
 
-Backend:
-- (Coming Soon)
+Vercel
+
+https://ai-personal-assistant-sable.vercel.app
+
+---
+
+## Backend
+
+Railway
+
+https://ai-personal-assistant-production-2cfc.up.railway.app
+
+---
+
+# 🚀 Future Enhancements
+
+- AI Voice Conversation
+- Image Upload Support
+- Multi-Document RAG
+- Docker Support
+- Kubernetes Deployment
+- AI Agents
+- Mobile Application
 
 ---
 
 # 👨‍💻 Developer
 
-**Santhosh S**
+## Santhosh S
 
 Java Backend Developer
 
-GitHub:
+### GitHub
+
 https://github.com/santhu1711
 
-LinkedIn:
-https://www.linkedin.com/in/santhosh17/
+### LinkedIn
+
+https://www.linkedin.com/in/santhosh17
+
+### Live Application
+
+https://ai-personal-assistant-sable.vercel.app
 
 ---
 
 # ⭐ Version
 
-Version 1.0
+**Version 1.0**
 
-Built with ❤️ using Java & Spring Boot.
+---
+
+<p align="center">
+
+Built with ❤️ using Java, Spring Boot, Artificial Intelligence & Modern Web Technologies.
+
+⭐ If you found this project useful, consider giving it a star!
+
+</p>
